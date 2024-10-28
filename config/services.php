@@ -17,6 +17,10 @@ return [
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
     ],
+    'stripe' => [
+    'key' => env('STRIPE_API_KEY'),
+    
+],
 
     'ses' => [
         'key' => env('AWS_ACCESS_KEY_ID'),

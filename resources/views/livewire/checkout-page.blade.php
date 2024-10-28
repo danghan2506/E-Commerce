@@ -50,9 +50,9 @@
 						<label class="block text-gray-700 dark:text-white mb-1" for="address">
 							Address
 						</label>
-						<input wire:model='address' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none  @error('first_name') border-red-500 @enderror" id="address" type="text">
+						<input wire:model='street_address' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700 dark:text-white dark:border-none  @error('street_address') border-red-500 @enderror" id="street_address" type="text">
 						</input>
-						@error('first_name')
+						@error('street_address')
 							<div class="text-red-500 text-sm">{{ $message }}</div>
 							@enderror
 					</div>
@@ -140,7 +140,7 @@
 						Subtotal
 					</span>
 					<span>
-						{{Number::currency($grand_total, 'VND')}}
+						{{Number::currency($grand_total, 'vnd')}}
 					</span>
 				</div>
 				<div class="flex justify-between mb-2 font-bold">
@@ -148,7 +148,7 @@
 						Taxes
 					</span>
 					<span>
-					{{Number::currency(0, 'VND')}}
+					{{Number::currency(0, 'vnd')}}
 					</span>
 				</div>
 				<div class="flex justify-between mb-2 font-bold">
@@ -156,7 +156,7 @@
 						Shipping Cost
 					</span>
 					<span>
-					{{Number::currency(0, 'VND')}}
+					{{Number::currency(0, 'vnd')}}
 					</span>
 				</div>
 				<hr class="bg-slate-400 my-4 h-1 rounded">
@@ -165,21 +165,22 @@
 						Grand Total
 					</span>
 					<span>
-					{{Number::currency($grand_total, 'VND')}}
+					{{Number::currency($grand_total, 'vnd')}}
 					</span>
 				</div>
 				</hr>
 			</div>
-			<button type='submit' class="bg-green-500 mt-4 w-full p-3 rounded-lg text-lg text-white hover:bg-green-600">
-				Place Order
-			</button>
+			<button type="submit"
+                class="bg-green-500 mt-4 w-full p-3 rounded-lg text-lg text-white hover:bg-green-600">
+                <span wire:loading.remove>Place Order</span>
+                <span wire:loading>Processing...</span>
+            </button>
 			<div class="bg-white mt-4 rounded-xl shadow p-4 sm:p-7 dark:bg-slate-900">
 				<div class="text-xl font-bold underline text-gray-700 dark:text-white mb-2">
 					BASKET SUMMARY
 				</div>
 				<ul class="divide-y divide-gray-200 dark:divide-gray-700" role="list">
 					@foreach ($cart_items as $item)
-					
 					<li class="py-3 sm:py-4" wire:key="{{ $item['product_id'] }}">
 						<div class="flex items-center">
 							<div class="flex-shrink-0">
@@ -195,13 +196,11 @@
 								</p>
 							</div>
 							<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-							{{ Number::currency($item['total_amount'], 'VND')}}
+							{{ Number::currency($item['total_amount'], 'vnd')}}
 							</div>
 						</div>
 					</li>
 					@endforeach
-					
-					
 				</ul>
 			</div>
 		</div>
