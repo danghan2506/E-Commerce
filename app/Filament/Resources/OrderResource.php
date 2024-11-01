@@ -190,7 +190,7 @@ class OrderResource extends Resource
                 TextColumn::make('grand_total')
                     ->numeric()
                     ->sortable()
-                    ->money('INR'),
+                    ->money('VND'),
                     
                 TextColumn::make('payment_method')
                     ->sortable()

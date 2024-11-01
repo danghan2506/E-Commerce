@@ -9,6 +9,7 @@ use App\Livewire\CartPage;
 use App\Livewire\CategoriesPage;
 use App\Livewire\CheckoutPage;
 use App\Livewire\HomePage;
+use App\Livewire\MyAccount;
 use App\Livewire\MyOrderDetailPage;
 use App\Livewire\MyOrdersPage;
 use App\Livewire\ProductDetailPage;
@@ -28,7 +29,6 @@ Route::get('/categories', CategoriesPage::class);
 Route::get('/products', ProductsPage::class);
 Route::get('/cart', CartPage::class);
 Route::get('/products/{slug}', ProductDetailPage::class);
-
 
 Route::middleware('guest')->group(function(){
     Route::get('/login', LoginPage::class)->name('login');
